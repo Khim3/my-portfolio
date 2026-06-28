@@ -1,0 +1,33 @@
+---
+title: "Meeting Agent: A Fullstack AI App on Microsoft Graph & Azure"
+publishedAt: "2026-06-01"
+summary: "A fullstack AI application that connects to Microsoft 365, pulls meetings, transcripts, and recordings via Microsoft Graph, and uses a multi-provider LLM layer to generate meeting minutes, insights, and infographics — plus an end-to-end English speaking assessment pipeline."
+team:
+  - name: "Khiem"
+---
+
+## Overview
+
+Meeting Agent is a fullstack AI application built at Orient Software. It authenticates against Microsoft 365, fetches a user's meetings, calendar events, and Teams transcripts/recordings through the Microsoft Graph API, and turns them into meeting minutes, key insights, and AI-generated infographics. It also ships an end-to-end English speaking assessment pipeline scored against IELTS and CEFR standards.
+
+## Key Features
+
+- **Microsoft Graph & Auth**: Integrated Microsoft Entra ID (OAuth via NextAuth 5) and the Microsoft Graph API to fetch meetings, calendar events, and Teams transcripts/recordings, with separate access paths for meeting organizers vs. delegated attendees.
+- **AI Orchestration (Vercel AI SDK)**: Built a multi-provider LLM layer (Azure OpenAI, OpenAI, Gemini) that generates meeting minutes, insights, and infographics; enforced structured output via Zod schemas and implemented automatic provider fallback with graceful degradation to deterministic heuristics.
+- **English Speaking Assessment**: Designed an end-to-end pipeline with Azure Speech Service, speaker diarization, FFmpeg audio clipping, Azure Blob Storage + CDN for staging and delivery, and Azure Neural TTS for per-word feedback — scored against IELTS band descriptors and CEFR levels.
+- **Background Job Workers**: Set up BullMQ + Redis worker pipelines for transcript fetching (Graph API → DB), config updates, and English assessment; guaranteed idempotency via deterministic job keys and heartbeats to prevent double-billing on retries.
+- **SSR Frontend & Admin Control Plane**: Built the full UI with the Next.js App Router (SSR) plus an admin dashboard covering runtime model config, a versioned pricing catalog, dynamic templates, a usage ledger, and usage analytics.
+
+## Engineering Practices
+
+- **Spec-Driven & AI-Native Development**: Every feature and bug fix was ticket-based with numbered requirements (REQ/NFR) traced through design, implementation, and verification, with AI-native workflows applied throughout.
+- **CI/CD & DevOps**: GitHub Actions → Azure Container Registry (multi-stage builds, layer caching) → AKS via Helm, deploying the web app and two workers as independent releases with automated rollout verification. The PR gate ran lint, type-check, build, 100% unit-test coverage, and a TruffleHog secret scan, backed by a GitOps-style infra repo and AI-assisted code review.
+
+## Technologies Used
+
+- **Next.js (App Router, SSR)** and **NextAuth 5**
+- **Microsoft Graph API** and **Microsoft Entra ID**
+- **Vercel AI SDK** with **Azure OpenAI / OpenAI / Gemini**, **Zod**
+- **Azure Speech Service**, **Azure Neural TTS**, **Azure Blob Storage + CDN**, **FFmpeg**
+- **BullMQ + Redis**, **PostgreSQL**
+- **GitHub Actions**, **Azure Container Registry**, **AKS + Helm**, **TruffleHog**

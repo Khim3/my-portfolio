@@ -1,6 +1,7 @@
 import { IconType } from "react-icons";
 import { FaLinux, FaDocker } from "react-icons/fa";
-import { SiPytorch, SiScikitlearn, SiLangchain, SiGraphql, SiTerraform, SiFastapi, SiTypescript, SiPostgresql } from "react-icons/si";
+import { SiPytorch, SiScikitlearn, SiLangchain, SiGraphql, SiTerraform, SiFastapi, SiTypescript, SiPostgresql, SiCplusplus, SiVercel } from "react-icons/si";
+import { VscAzure } from "react-icons/vsc";
 
 import {
   HiArrowUpRight,
@@ -78,6 +79,9 @@ export const iconLibrary: Record<string, IconType> = {
   ollama: SiTerraform, // closest "agent/tool" style icon since Ollama has no official icon
   linux: FaLinux,
   docker: FaDocker,
+  cplusplus: SiCplusplus,
+  azure: VscAzure,
+  aisdk: SiVercel,
 };
 
 export type IconLibrary = typeof iconLibrary;

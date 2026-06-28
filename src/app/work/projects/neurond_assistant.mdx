@@ -1,0 +1,31 @@
+---
+title: "Neurond Assistant: A Multi-Provider Fullstack AI Chatbot"
+publishedAt: "2026-04-01"
+summary: "A fullstack AI chatbot with a provider-agnostic registry over 9 LLM providers, a hybrid RAG pipeline, 20+ specialized agents and 30+ tools, image and real-time voice modes, and multi-tenant CI/CD to Azure Kubernetes."
+team:
+  - name: "Khiem"
+---
+
+## Overview
+
+Neurond Assistant is a fullstack AI chatbot built at Orient Software. It runs on a provider-agnostic LLM registry, retrieves knowledge through a hybrid RAG pipeline, and exposes a large catalog of specialized agents and tools — alongside image generation/editing and real-time voice modes — all delivered through a multi-tenant CI/CD pipeline on Azure Kubernetes.
+
+## Key Features
+
+- **LLM Orchestration**: Built the core chat pipeline on the Vercel AI SDK with a provider-agnostic registry abstracting 9 LLM providers (OpenAI, Anthropic, Google, xAI, Bedrock, Azure, OpenRouter, and more), Redis-backed resumable streaming, multi-step tool-calling, and per-tenant Azure Key Vault credentials.
+- **Hybrid RAG Pipeline**: Combined Azure Document Intelligence parsing, token-aware chunking, OpenAI embeddings in PostgreSQL/pgvector (HNSW index), Reciprocal Rank Fusion + LLM reranking, and iterative Chain-of-RAG retrieval.
+- **Agents & Tools**: Developed 20+ specialized agents (Deep Research via Tavily, Data Analyst on an E2B sandbox, CV Writer, Office-file, SQL) and 30+ AI tools, plus an MCP client (STDIO/SSE/HTTP) for external tool connectivity.
+- **Image & Voice**: Built an Image Studio supporting generation, editing, and inpainting (OpenAI gpt-image-1, Azure OpenAI, Google Vertex AI), and a real-time Voice mode via the OpenAI/Azure Realtime API with WebRTC, VAD, and Whisper transcription.
+
+## Engineering Practices
+
+- **Spec-Driven & AI-Native Development**: Every feature and bug fix was ticket-based with numbered requirements traced through design, implementation, and verification, with AI-native workflows applied throughout.
+- **Multi-Tenant CI/CD & DevOps**: GitHub Actions → Azure Container Registry → AKS via Helm (`--atomic` auto-rollback), with parallel per-tenant matrix builds (isolated Azure service principal, Key Vault, namespace, and Helm values) off a shared base image with content-addressed caching. The PR gate ran lint, type-check, diff-scoped 95% coverage, and TruffleHog; release automation handled auto-tagging, CHANGELOG, and version bumping behind a human-approval gate with Microsoft Teams notifications.
+
+## Technologies Used
+
+- **Vercel AI SDK** with a 9-provider registry (OpenAI, Anthropic, Google, xAI, Bedrock, Azure, OpenRouter)
+- **PostgreSQL / pgvector (HNSW)**, **Azure Document Intelligence**, **Reciprocal Rank Fusion**, **Chain-of-RAG**
+- **Redis**, **Azure Key Vault**, **MCP (STDIO/SSE/HTTP)**, **Tavily**, **E2B**
+- **OpenAI gpt-image-1**, **Azure OpenAI**, **Google Vertex AI**, **Realtime API + WebRTC + Whisper**
+- **GitHub Actions**, **Azure Container Registry**, **AKS + Helm**, **TruffleHog**

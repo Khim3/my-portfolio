@@ -11,26 +11,24 @@ link: "https://github.com/Khim3/fullstack_nextjs_ai_agent"
 
 ## Overview
 
-Development of a flexible and highly customizable design system using Next.js for front-end and Figma for design collaboration.
+A fullstack AI agent platform built with Next.js and LangGraph.js. The system loads tools dynamically through the Model Context Protocol (MCP), runs multi-step tool-calling with a human tool-approval workflow, and persists agent state so conversations can resume across sessions.
 
 ## Key Features
 
-- **Component Library**: Built a set of modular, reusable UI components using React and styled-components in Next.js, focusing on accessibility and responsiveness.
-- **Theming and Customization**: Integrated a theming system that allows easy switching and customization of color palettes, typography, and layout styles using CSS variables and Figma tokens.
-- **Figma Integration**: Collaborated closely with designers by setting up a shared design library in Figma. This library was synchronized with the codebase, ensuring design handoffs were seamless and that design tokens remained consistent across both platforms.
-- **Documentation and Usage Guidelines**: Developed comprehensive documentation with Storybook to showcase components, usage patterns, and best practices, ensuring the design system is easy to adopt by other teams.
+- **LangGraph.js Agent Core**: Built the agent runtime on LangGraph.js with multi-step tool calling and a tool-approval workflow that puts a human in the loop before sensitive actions execute.
+- **MCP Dynamic Tool Loading**: Integrated MCP for plug-and-play tools — filesystem, HTTP APIs, and custom Python servers — that can be added without changing application code.
+- **Streaming Next.js Interface**: Developed a Next.js 16 frontend with Server-Sent Events (SSE) streaming, interactive tool dialogs, and React Query–powered UI updates.
+- **Persistent State**: Implemented thread and checkpoint storage with Prisma + PostgreSQL so agent state survives restarts and sessions.
+- **Developer-Friendly Setup**: Shipped with Docker Compose, Prisma migrations, environment-based configuration, and an extendable project structure.
 
 ## Technologies Used
 
-- **Next.js**: For fast, server-rendered React applications.
-- **Figma**: For creating and managing design assets and prototypes.
-- **Styled-Components**: For styling React components with a modular, themable approach.
-- **Storybook**: For building an interactive, documented component library.
-
-## Challenges and Learnings
-
-One key challenge was balancing the need for flexibility with the desire to maintain design consistency. The solution involved creating well-defined design tokens and establishing clear guidelines for when and how components could be customized. Additionally, setting up effective collaboration workflows between designers and developers using Figma and Git was a learning experience that greatly improved the process.
+- **Next.js 16**: Server-rendered React frontend with SSE streaming.
+- **LangGraph.js**: Agent orchestration and multi-step tool calling.
+- **Model Context Protocol (MCP)**: Dynamic, code-free tool integration.
+- **Prisma + PostgreSQL**: Persistent threads and checkpoints.
+- **Docker Compose**: Reproducible local development environment.
 
 ## Outcome
 
-The design system is now actively used across multiple projects, leading to faster development cycles, fewer design inconsistencies, and improved collaboration between design and development teams. It has become a foundation for scaling our products efficiently while ensuring a cohesive user experience.
+The platform demonstrates a clean, extendable pattern for building production-style AI agents: tools are added through MCP without code changes, state is durable, and a tool-approval step keeps the human in control of what the agent can do.

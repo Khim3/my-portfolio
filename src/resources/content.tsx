@@ -5,8 +5,8 @@ const person: Person = {
   firstName: "Khiem",
   lastName: "Nhat Nguyen",
   name: `Nguyen Nhat Khiem`,
-  role: "AI Engineer",
-  avatar: "/images/avatar.jpg",
+  role: "AI Engineer - Data Scientist",
+  avatar: "/images/avatar-2026.jpg",
   email: "nhatkhiem003@gmail.com",
   location: "Asia/Ho_Chi_Minh", // Expecting the IANA time zone identifier, e.g., 'Europe/Vienna'
   languages: ["English", "Vietnamese"], // optional: Leave the array empty if you don't want to display languages
@@ -48,23 +48,24 @@ const home: Home = {
   label: "Home",
   title: `${person.name}'s Portfolio`,
   description: `Portfolio website showcasing my work as a ${person.role}`,
-  headline: <>Building bridges between design and code</>,
+  headline: <>Building AI agents, RAG systems, and full-stack apps</>,
   featured: {
     display: true,
     title: (
       <Row gap="12" vertical="center">
-        <strong className="ml-4">Once UI</strong>{" "}
+        <strong className="ml-4">Meeting Agent</strong>{" "}
         <Line background="brand-alpha-strong" vert height="20" />
         <Text marginRight="4" onBackground="brand-medium">
           Featured work
         </Text>
       </Row>
     ),
-    href: "/work/building-once-ui-a-customizable-design-system",
+    href: "/work",
   },
   subline: (
     <>
-    I'm Selene, a design engineer at <Text as="span" size="xl" weight="strong">ONCE UI</Text>, where I craft intuitive <br /> user experiences. After hours, I build my own projects.
+    I'm {person.firstName}, an <Text as="span" size="xl" weight="strong">AI Engineer</Text> based in Ho Chi Minh City, where I build
+    LLM-powered agents and full-stack AI products. <br /> After hours, I work on my own research and projects.
 </>
   ),
 };
@@ -86,13 +87,14 @@ const about: About = {
     link: "https://cal.com",
   },
   intro: {
-    display: false,
+    display: true,
     title: "Introduction",
     description: (
       <>
-        Khiem is a Ho Chi Minh City-based AI engineer with a passion for transforming complex challenges
-        into simple, elegant design solutions. His work spans digital interfaces, interactive
-        experiences, and the convergence of design and technology.
+        Khiem is a Ho Chi Minh City-based AI Engineer with a background in Data Science. He builds
+        LLM-powered agents, retrieval-augmented (RAG) systems, and full-stack AI products — from
+        Microsoft Graph and Vercel AI SDK orchestration to multi-tenant CI/CD on Azure Kubernetes.
+        He is also the author of IUFlowGen, published at MIWAI 2025 (Springer LNCS).
       </>
     ),
   },
@@ -101,9 +103,22 @@ const about: About = {
     title: "Work Experience",
 experiences: [
   {
+    company: "Orient Software",
+    timeframe: "Jan 2026 - Jul 2026",
+    role: "AI Engineer",
+    achievements: [
+      <>Meeting Agent (Fullstack AI App): Integrated Microsoft Entra ID (OAuth via NextAuth 5) and Microsoft Graph API to fetch meetings, calendar events, and Teams transcripts/recordings, then built a multi-provider LLM layer (Azure OpenAI, OpenAI, Gemini) with Zod-enforced structured output and automatic provider fallback to generate meeting minutes, insights, and infographics.</>,
+      <>English Speaking Assessment: Designed an end-to-end pipeline with Azure Speech Service, speaker diarization, FFmpeg audio clipping, Azure Blob Storage + CDN, and Azure Neural TTS for per-word feedback scored against IELTS band descriptors and CEFR levels.</>,
+      <>Neurond Assistant (Fullstack AI Chatbot): Built a provider-agnostic chat pipeline on the Vercel AI SDK abstracting 9 LLM providers with Redis-backed resumable streaming and multi-step tool-calling, plus a hybrid RAG pipeline (Azure Document Intelligence, OpenAI embeddings in pgvector/HNSW, Reciprocal Rank Fusion + LLM reranking, Chain-of-RAG).</>,
+      <>Agents & Tooling: Developed 20+ specialized agents (Deep Research, Data Analyst on E2B sandbox, CV Writer, SQL) and 30+ AI tools, integrating an MCP client (STDIO/SSE/HTTP) for external tool connectivity.</>,
+      <>CI/CD & DevOps: Shipped via GitHub Actions → Azure Container Registry → AKS with Helm (multi-stage builds, layer caching, automated rollout verification) behind a PR gate of lint, type-check, build, unit-test coverage, and TruffleHog secret scanning.</>,
+    ],
+    images: [],
+  },
+  {
     company: "Velox Tech",
     timeframe: "July 2024 - Oct 2024",
-    role: "AI Engineer Intern",
+    role: "Computer Vision / AI Intern",
     achievements: [
       <>Optimized Database Systems: Rearranged and improved the database system for better efficiency and scalability.</>,
       <>AI Development: Trained, tested, labeled data, and prepared datasets to streamline model training; used Ultralytics with PyTorch to fine-tune and evaluate the YOLOv9 model, achieving ~85% segmentation accuracy and ~82% detection accuracy for small aquatic creatures.</>,
@@ -216,8 +231,12 @@ studies: {
             name: "PostgreSQL",
             icon: "postgresql",
           },
+          {
+            name: "C++",
+            icon: "cplusplus",
+          },
         ],
-        
+
       },
       {
         title: "AI Development",
@@ -254,20 +273,28 @@ studies: {
             name: "FastAPI",
             icon: "fastapi",
           },
+          {
+            name: "AI SDK",
+            icon: "aisdk",
+          },
         ],
           },
-        {  
-        title: "Environments & Tools",
-        description: (<>Familiar with various development environments and tools.</>
+        {
+        title: "Cloud, Environments & Tools",
+        description: (<>Shipping and operating AI services on cloud and container platforms.</>
         ),
         tags: [
           {
-            name: "Linux",
-            icon: "linux",
+            name: "Azure",
+            icon: "azure",
           },
           {
             name: "Docker",
             icon: "docker",
+          },
+          {
+            name: "Linux",
+            icon: "linux",
           },
         ],
       },

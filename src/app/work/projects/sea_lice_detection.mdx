@@ -1,0 +1,28 @@
+---
+title: "Sea Lice Detection on Salmon with YOLOv9"
+publishedAt: "2024-10-01"
+summary: "A computer-vision system for a Norwegian aquaculture client, built at Velox Tech, that detects and segments sea lice on salmon using a fine-tuned YOLOv9 model — reaching ~85% segmentation and ~82% small-object detection accuracy — backed by an optimized, distributed database."
+team:
+  - name: "Khiem"
+---
+
+## Overview
+
+During my Computer Vision / AI internship at Velox Tech, I worked on a sea lice detection system for a Norwegian aquaculture company. Sea lice are tiny parasites on farmed salmon that are costly and difficult to monitor by hand, so the goal was to detect and segment them automatically from images of the fish. The work spanned the full pipeline: dataset preparation, model fine-tuning and evaluation, and the data infrastructure behind it.
+
+## Key Features
+
+- **AI Development**: Trained, tested, labeled data, and prepared datasets to streamline model training; used Ultralytics with PyTorch to fine-tune and evaluate a YOLOv9 model, achieving ~85% accuracy in segmentation and ~82% in small aquatic creature (sea lice) detection.
+- **Optimized Database Systems**: Rearranged and improved the existing database system for better efficiency and scalability.
+- **Distributed Systems**: Designed and implemented a distributed database system with a publish–subscribe mechanism to move data reliably through the pipeline.
+- **Workflow Documentation**: Created detailed documentation to enhance clarity and maintainability for the team.
+
+## Technologies Used
+
+- **YOLOv9** with **Ultralytics** and **PyTorch** for segmentation and small-object detection
+- **Python** for data preparation, labeling, training, and evaluation
+- **Distributed database** with a **publish–subscribe** architecture
+
+## Outcome
+
+The fine-tuned YOLOv9 model reliably detected and segmented sea lice on salmon at ~85% segmentation and ~82% detection accuracy, giving the Norwegian client an automated way to monitor parasite load that is far faster and more consistent than manual inspection — supported by a more efficient, scalable data pipeline.
